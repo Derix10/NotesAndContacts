@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:background="#EAE5F6"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".ui.fragment.addContact.AddContacts">
+
+    <EditText
+        android:id="@+id/edName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="22sp"
+        android:layout_marginTop="150dp"
+        android:hint="@string/name" />
+
+
+    <EditText
+        android:id="@+id/edContact"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="22sp"
+        android:hint="@string/contact"
+        android:inputType="number"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSaveContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="@color/item_contact"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:paddingHorizontal="50dp"
+        android:text="@string/save"
+        android:textSize="20sp"
+        app:cornerRadius="12dp" />
+</LinearLayout>
