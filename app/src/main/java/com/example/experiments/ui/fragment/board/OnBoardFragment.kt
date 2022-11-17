@@ -1,21 +1,42 @@
 package com.example.experiments.ui.fragment.board
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.viewpager2.widget.ViewPager2
 import com.example.experiments.R
 import com.example.experiments.base.BaseFragment
+import com.example.experiments.databinding.ActivityMainBinding
 import com.example.experiments.databinding.FragmentOnBoardBinding
+import com.example.experiments.databinding.ItemNoteBinding
 import com.example.experiments.ui.App
+import com.example.experiments.ui.activity.MainActivity
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.Api
+import com.google.android.gms.common.api.ApiException
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class OnBoardFragment : BaseFragment<FragmentOnBoardBinding>(FragmentOnBoardBinding::inflate){
 
     private lateinit var adapter: BoardAdapter
     private var currentPage = 0
     private lateinit var controller: NavController
+
+
+    private lateinit var auth: FirebaseAuth
+    private lateinit var googleSignInClient: GoogleSignInClient
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val navHostFragment = requireActivity().supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
@@ -25,11 +46,15 @@ class OnBoardFragment : BaseFragment<FragmentOnBoardBinding>(FragmentOnBoardBind
         setupUI()
     }
     override fun setupUI() {
+        initGoogleSignClient()
         adapter = BoardAdapter()
         binding.pagerOnBoard.adapter = adapter
         TabLayoutMediator(binding.mDots, binding.pagerOnBoard){ _, _ -> }.attach()
 
         binding.btnNext.setOnClickListener{
+            signIn()
+
+
             App.prefs.saveBoardState()
             controller.navigateUp()
 
@@ -49,7 +74,7 @@ class OnBoardFragment : BaseFragment<FragmentOnBoardBinding>(FragmentOnBoardBind
             override fun onPageSelected(position: Int) {
 
                 if (position == 0) currentPage = 0
-                if (position == 1) currentPage = 2
+                if (position == 1) currentPage = 1
                 if (position == 2) {
                     binding.btnNext.visibility = View.VISIBLE
                 }else{
@@ -59,5 +84,57 @@ class OnBoardFragment : BaseFragment<FragmentOnBoardBinding>(FragmentOnBoardBind
             }
         })
 
+
+
+
+    }
+
+    private fun initGoogleSignClient() {
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+
+
+        googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
+        auth = Firebase.auth
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == RC_SIGN_IN){
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            try {
+                val account = task.getResult(ApiException::class.java)!!
+                account.idToken?.let { firebaseAuthWithGoogle(it) }
+            }catch (e : ApiException){
+                Log.d("ololo", e.toString())
+            }
+        }
+
+    }
+
+    private fun firebaseAuthWithGoogle(idToken: String) {
+        val credentional = GoogleAuthProvider.getCredential(idToken, null)
+        auth.signInWithCredential(credentional)
+            .addOnCompleteListener(requireActivity()) { task ->
+                if (task.isSuccessful){
+                    controller.navigateUp()
+                }else{
+
+                    Toast.makeText(requireContext(), "Ошибка", Toast.LENGTH_SHORT).show()
+
+                }
+            }
+
+    }
+    private fun signIn(){
+        val intent = googleSignInClient.signInIntent
+        startActivityForResult(intent, RC_SIGN_IN)
+    }
+
+    companion object{
+        private const val RC_SIGN_IN = 9001
     }
 }

@@ -25,7 +25,6 @@ class NoteAdapter(private val listener: NoteListener) : RecyclerView.Adapter<Not
 
     @SuppressLint("NotifyDataSetChanged")
     fun removeNote(position: Int){
-
         App.db.noteDao()!!.deleteNote(list.removeAt(position))
         notifyItemRemoved(position)
     }

@@ -26,9 +26,6 @@ class NoteFragment : BaseFragment<FragmentNoteBinding>(FragmentNoteBinding::infl
         binding.rcView.adapter = adapter
         loadNote()
 
-
-
-
         val swipeToDelete = object : SwipeToDelete() {
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
@@ -36,10 +33,10 @@ class NoteFragment : BaseFragment<FragmentNoteBinding>(FragmentNoteBinding::infl
 
                 val builder = AlertDialog.Builder(activity)
                 builder.run {
-                    setTitle("Delete project list")
-                    setMessage("You want to delete project?")
-                    setPositiveButton("Yes") { _, _ ->   adapter?.removeNote(itemPosition)                }
-                    setNegativeButton("Cancel") { _, _ -> adapter?.notifyItemChanged(itemPosition)
+                    setTitle("Удалить этот лист")
+                    setMessage("Ты точно хочешь удалить?")
+                    setPositiveButton("Да") { _, _ ->   adapter?.removeNote(itemPosition)                }
+                    setNegativeButton("Нет") { _, _ -> adapter?.notifyItemChanged(itemPosition)
                     }
                 }
 
@@ -76,9 +73,7 @@ class NoteFragment : BaseFragment<FragmentNoteBinding>(FragmentNoteBinding::infl
         }
     }
     private fun loadNote() {
-
-            adapter?.setNote(App.db.noteDao()!!.getAllNote() as ArrayList<NoteModel>)
-
+        adapter?.setNote(App.db.noteDao()!!.getAllNote() as ArrayList<NoteModel>)
         }
 
 

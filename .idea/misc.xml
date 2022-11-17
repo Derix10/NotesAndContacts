@@ -13,12 +13,13 @@
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/drawable/ic_baseline_edit_note_24.xml" value="0.101" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/drawable/ic_launcher_background.xml" value="0.224" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/layout/activity_main.xml" value="0.17426545086119555" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/layout/expriments.xml" value="0.33" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/layout/fragment_add_contact.xml" value="0.33" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/layout/fragment_add_contacts.xml" value="0.25" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/layout/fragment_add_note.xml" value="0.1762917933130699" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/layout/fragment_blank.xml" value="0.17426545086119555" />
-        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/layout/fragment_contact.xml" value="0.7388451443569554" />
-        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/layout/fragment_note.xml" value="0.567699836867863" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/layout/fragment_contact.xml" value="0.5349730976172176" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/layout/fragment_note.xml" value="0.2822185970636215" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/layout/fragment_on_board.xml" value="0.18" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/layout/item_contact.xml" value="0.1762917933130699" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/layout/item_note.xml" value="0.25" />
