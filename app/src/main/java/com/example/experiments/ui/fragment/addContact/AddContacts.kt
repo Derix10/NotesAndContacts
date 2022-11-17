@@ -6,23 +6,19 @@ import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.database.Cursor
-import android.database.sqlite.SQLiteDatabase
 import android.net.Uri
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.view.View
-import android.widget.CursorAdapter
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.content.contentValuesOf
 import com.example.experiments.R
 import com.example.experiments.base.BaseFragment
 import com.example.experiments.databinding.FragmentAddContactsBinding
 import com.example.experiments.model.ContactModel
 import com.example.experiments.ui.App
 import com.example.experiments.ui.fragment.contacts.ContactFragment
-import javax.xml.transform.Result
 
 
 class AddContacts : BaseFragment<FragmentAddContactsBinding>(FragmentAddContactsBinding::inflate) {
@@ -100,6 +96,7 @@ class AddContacts : BaseFragment<FragmentAddContactsBinding>(FragmentAddContacts
 
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -120,6 +117,7 @@ class AddContacts : BaseFragment<FragmentAddContactsBinding>(FragmentAddContacts
 
 
 
+    @Deprecated("Deprecated in Java")
     @SuppressLint("Range")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
