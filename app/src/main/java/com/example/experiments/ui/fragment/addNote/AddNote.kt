@@ -12,12 +12,6 @@ import com.example.experiments.ui.App
 
 class AddNote : BaseFragment<FragmentAddNoteBinding>(FragmentAddNoteBinding::inflate) {
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setupUI()
-        setupObserver()
-    }
-
     @SuppressLint("SetTextI18n")
     override fun setupObserver() {
         super.setupObserver()

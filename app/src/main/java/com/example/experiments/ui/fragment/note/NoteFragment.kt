@@ -14,12 +14,7 @@ import com.example.experiments.ui.fragment.addNote.AddNote
 
 
 class NoteFragment : BaseFragment<FragmentNoteBinding>(FragmentNoteBinding::inflate), NoteAdapter.NoteListener {
-   private var adapter: NoteAdapter? = null
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setupUI()
-        setupObserver()
-    }
+    private var adapter: NoteAdapter? = null
 
     override fun setupUI() {
         adapter = NoteAdapter(this)

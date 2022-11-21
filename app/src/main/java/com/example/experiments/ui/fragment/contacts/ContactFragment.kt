@@ -19,12 +19,6 @@ import com.example.experiments.ui.fragment.note.SwipeToDelete
 
 class ContactFragment : BaseFragment<FragmentContactBinding>(FragmentContactBinding::inflate), ContactAdapter.ContactListener {
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setupObserver()
-        setupUI()
-    }
-
     override fun setupUI() {
 
         val adapter = ContactAdapter(this)
