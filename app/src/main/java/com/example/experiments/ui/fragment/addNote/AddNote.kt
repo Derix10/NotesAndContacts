@@ -8,7 +8,6 @@ import com.example.experiments.base.BaseFragment
 import com.example.experiments.databinding.FragmentAddNoteBinding
 import com.example.experiments.model.NoteModel
 import com.example.experiments.ui.App
-import com.example.experiments.ui.fragment.note.NoteFragment
 
 
 class AddNote : BaseFragment<FragmentAddNoteBinding>(FragmentAddNoteBinding::inflate) {
@@ -40,15 +39,14 @@ class AddNote : BaseFragment<FragmentAddNoteBinding>(FragmentAddNoteBinding::inf
                         id = id,
                         title = title,
                         description = description))
-                requireActivity().supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment,NoteFragment()).commit()
 
             } else {
                 App.db.noteDao()!!.addNote(
                     NoteModel(
                         title = title,
                         description = description))
-            requireActivity().supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment, NoteFragment()).commit()
             }
+            controller.navigate(R.id.noteFragment)
         }
     }
 }

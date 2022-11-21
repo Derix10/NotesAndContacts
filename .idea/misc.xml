@@ -9,6 +9,7 @@
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/drawable/dot.xml" value="0.1" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/drawable/dotssss.xml" value="0.1" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.114" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/drawable/ic_baseline_call_24.xml" value="0.138" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/drawable/ic_baseline_contact_phone_24.xml" value="0.1" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/drawable/ic_baseline_edit_note_24.xml" value="0.101" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/drawable/ic_launcher_background.xml" value="0.224" />
@@ -16,14 +17,15 @@
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/layout/expriments.xml" value="0.33" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/layout/fragment_add_contact.xml" value="0.33" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/layout/fragment_add_contacts.xml" value="0.25" />
-        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/layout/fragment_add_note.xml" value="0.1762917933130699" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/layout/fragment_add_note.xml" value="0.22" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/layout/fragment_blank.xml" value="0.17426545086119555" />
-        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/layout/fragment_contact.xml" value="0.5349730976172176" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/layout/fragment_contact.xml" value="0.25" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/layout/fragment_note.xml" value="0.2822185970636215" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/layout/fragment_on_board.xml" value="0.18" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/layout/item_contact.xml" value="0.1762917933130699" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/layout/item_note.xml" value="0.25" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/layout/item_on_board.xml" value="0.18" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/layout/item_whatsapp_or_dialer.xml" value="0.25669642857142855" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Experiments/app/src/main/res/menu/menu_bottom.xml" value="0.22" />
       </map>
     </option>

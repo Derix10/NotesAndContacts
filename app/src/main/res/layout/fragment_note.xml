@@ -8,28 +8,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragment.note.NoteFragment">
 
-    <androidx.cardview.widget.CardView
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:backgroundTint="#D19D17"
-        android:layout_width="match_parent"
-        android:layout_height="60dp">
-        <TextView
-            android:paddingStart="20sp"
-            android:paddingEnd="180dp"
-            android:gravity="center"
-            android:text="@string/notes"
-            android:textSize="26sp"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/white"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            app:drawableStartCompat="@drawable/ic_baseline_edit_note_24" />
-    </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
-
-        android:layout_marginTop="60dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/rcView"

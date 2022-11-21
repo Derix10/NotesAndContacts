@@ -8,26 +8,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragment.contacts.ContactFragment">
 
-   <androidx.cardview.widget.CardView
-       app:layout_constraintTop_toTopOf="parent"
-       app:layout_constraintStart_toStartOf="parent"
-       android:backgroundTint="#9FC632"
-       android:layout_width="match_parent"
-       android:layout_height="60dp">
-       <TextView
-           android:paddingStart="20sp"
-           android:paddingEnd="180dp"
-           android:gravity="center"
-           android:text="@string/contacts"
-           android:textSize="26sp"
-           android:layout_margin="12dp"
-           android:textColor="@color/white"
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           app:drawableStartCompat="@drawable/ic_baseline_contact_phone_24" />
-   </androidx.cardview.widget.CardView>
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="60dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/rcViewNew"

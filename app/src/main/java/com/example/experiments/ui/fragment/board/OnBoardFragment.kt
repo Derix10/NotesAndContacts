@@ -1,12 +1,10 @@
 package com.example.experiments.ui.fragment.board
 
 import android.content.Intent
-import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.experiments.R
 import com.example.experiments.base.BaseFragment
@@ -26,20 +24,13 @@ class OnBoardFragment : BaseFragment<FragmentOnBoardBinding>(FragmentOnBoardBind
 
     private lateinit var adapter: BoardAdapter
     private var currentPage = 0
-    private lateinit var controller: NavController
 
 
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        val navHostFragment = requireActivity().supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-                NavHostFragment
 
-        controller = navHostFragment.navController
-        setupUI()
-    }
+
     override fun setupUI() {
         initGoogleSignClient()
         adapter = BoardAdapter()
@@ -48,12 +39,8 @@ class OnBoardFragment : BaseFragment<FragmentOnBoardBinding>(FragmentOnBoardBind
 
         binding.btnNext.setOnClickListener{
             signIn()
-
-
+            findNavController().navigateUp()
             App.prefs.saveBoardState()
-            controller.navigateUp()
-
-
 
             if (currentPage < 2){
                 currentPage++
@@ -63,7 +50,10 @@ class OnBoardFragment : BaseFragment<FragmentOnBoardBinding>(FragmentOnBoardBind
                     2 -> binding.pagerOnBoard.currentItem = 2
                 }
             }
+
+
         }
+
 
         binding.pagerOnBoard.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
             override fun onPageSelected(position: Int) {
@@ -78,11 +68,9 @@ class OnBoardFragment : BaseFragment<FragmentOnBoardBinding>(FragmentOnBoardBind
                 super.onPageSelected(position)
             }
         })
-
-
-
-
     }
+
+
 
     private fun initGoogleSignClient() {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -96,7 +84,6 @@ class OnBoardFragment : BaseFragment<FragmentOnBoardBinding>(FragmentOnBoardBind
 
     }
 
-    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(requestCode == RC_SIGN_IN){
@@ -105,7 +92,7 @@ class OnBoardFragment : BaseFragment<FragmentOnBoardBinding>(FragmentOnBoardBind
                 val account = task.getResult(ApiException::class.java)!!
                 account.idToken?.let { firebaseAuthWithGoogle(it) }
             }catch (e : ApiException){
-                Log.d("ololo", e.toString())
+                Log.d("ololo", "This is ololo: $e")
             }
         }
 
@@ -115,8 +102,12 @@ class OnBoardFragment : BaseFragment<FragmentOnBoardBinding>(FragmentOnBoardBind
         val credentional = GoogleAuthProvider.getCredential(idToken, null)
         auth.signInWithCredential(credentional)
             .addOnCompleteListener(requireActivity()) { task ->
+                Log.d("ololo", "This is task : $task")
                 if (task.isSuccessful){
+
                     controller.navigateUp()
+                    Toast.makeText(requireContext(), "Success", Toast.LENGTH_SHORT).show()
+
                 }else{
 
                     Toast.makeText(requireContext(), "Ошибка", Toast.LENGTH_SHORT).show()

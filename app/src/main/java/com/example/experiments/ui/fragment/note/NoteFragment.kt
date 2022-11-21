@@ -54,14 +54,11 @@ class NoteFragment : BaseFragment<FragmentNoteBinding>(FragmentNoteBinding::infl
 
 
     override fun onClickNote(model: NoteModel) {
-        val fragment = AddNote()
         val bundle = Bundle()
         bundle.putString("title", model.title)
         bundle.putString("description", model.description)
         bundle.putInt("position", model.id!!)
-        fragment.arguments = bundle
-        requireActivity().supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment,fragment).commit()
-
+        controller.navigate(R.id.addContact, bundle)
     }
 
 
@@ -69,7 +66,7 @@ class NoteFragment : BaseFragment<FragmentNoteBinding>(FragmentNoteBinding::infl
     override fun setupObserver() {
         super.setupObserver()
         binding.btnAdd.setOnClickListener {
-            requireActivity().supportFragmentManager.beginTransaction().replace(R.id.container,AddNote()).addToBackStack(null).commit()
+            controller.navigate(R.id.addContact)
         }
     }
     private fun loadNote() {

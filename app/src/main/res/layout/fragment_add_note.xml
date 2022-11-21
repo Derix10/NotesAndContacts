@@ -4,15 +4,14 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@drawable/img"
     android:id="@+id/container"
     android:gravity="center_horizontal"
+    android:background="#EAECFF"
     android:layout_height="match_parent"
     tools:context=".ui.fragment.addNote.AddNote">
 
     <EditText
         android:padding="10dp"
-        android:background="@color/white"
         android:layout_marginTop="150dp"
         android:hint="@string/title2"
         android:layout_marginHorizontal="22sp"
@@ -24,7 +23,6 @@
 
     <EditText
         android:padding="10dp"
-        android:background="@color/white"
         android:hint="@string/description2"
         android:id="@+id/edDescription"
         android:layout_margin="22sp"
@@ -36,7 +34,7 @@
         android:insetBottom="0dp"
         android:insetTop="0dp"
         app:cornerRadius="12dp"
-        android:backgroundTint="#AEA151"
+        android:backgroundTint="#E1D171"
         android:text="@string/save"
         android:textSize="20sp"
         android:paddingHorizontal="50dp"

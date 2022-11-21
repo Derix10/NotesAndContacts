@@ -4,6 +4,9 @@ package com.example.experiments.ui.fragment.contacts
 import android.app.AlertDialog
 import android.os.Bundle
 import android.view.View
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.experiments.R
@@ -55,21 +58,17 @@ class ContactFragment : BaseFragment<FragmentContactBinding>(FragmentContactBind
 
     override fun onClickContact(model: ContactModel) {
         val bundle = Bundle()
-        val fragment = AddContacts()
         bundle.putInt("position", model.id!!)
         bundle.putString("name", model.name)
         bundle.putString("contact", model.contact)
-        fragment.arguments = bundle
-        requireActivity().supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment).commit()
+        controller.navigate(R.id.addContacts, bundle)
     }
-
     override fun setupObserver() {
         super.setupObserver()
 
         binding.btnAddContact.setOnClickListener {
-            requireActivity().supportFragmentManager.beginTransaction().replace(R.id.container,
-                AddContacts()
-            ).addToBackStack(null).commit()
+            controller.navigate(R.id.addContacts)
+
 
         }
     }
