@@ -12,4 +12,7 @@
         android:icon="@drawable/ic_baseline_contact_phone_24"
         android:id="@+id/contactFragment"/>
 
+    <item android:title="@string/images"
+        android:icon="@drawable/ic_baseline_image_24"
+        android:id="@+id/profileFragment"/>
 </menu>

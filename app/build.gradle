@@ -42,6 +42,7 @@ dependencies {
 
     //dexter
     implementation 'com.karumi:dexter:6.2.3'
+    implementation 'com.google.firebase:firebase-auth:21.1.0'
 
     //Navigation
     def nav_version = "2.5.3"

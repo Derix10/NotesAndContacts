@@ -29,14 +29,9 @@ class OnBoardFragment : BaseFragment<FragmentOnBoardBinding>(FragmentOnBoardBind
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
 
-
-
-    override fun setupUI() {
+    override fun setupObserver() {
+        super.setupObserver()
         initGoogleSignClient()
-        adapter = BoardAdapter()
-        binding.pagerOnBoard.adapter = adapter
-        TabLayoutMediator(binding.mDots, binding.pagerOnBoard){ _, _ -> }.attach()
-
         binding.btnNext.setOnClickListener{
             signIn()
             findNavController().navigateUp()
@@ -53,6 +48,15 @@ class OnBoardFragment : BaseFragment<FragmentOnBoardBinding>(FragmentOnBoardBind
 
 
         }
+
+    }
+
+    override fun setupUI() {
+
+        adapter = BoardAdapter()
+        binding.pagerOnBoard.adapter = adapter
+        TabLayoutMediator(binding.mDots, binding.pagerOnBoard){ _, _ -> }.attach()
+
 
 
         binding.pagerOnBoard.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
@@ -95,7 +99,6 @@ class OnBoardFragment : BaseFragment<FragmentOnBoardBinding>(FragmentOnBoardBind
                 Log.d("ololo", "This is ololo: $e")
             }
         }
-
     }
 
     private fun firebaseAuthWithGoogle(idToken: String) {
@@ -104,14 +107,10 @@ class OnBoardFragment : BaseFragment<FragmentOnBoardBinding>(FragmentOnBoardBind
             .addOnCompleteListener(requireActivity()) { task ->
                 Log.d("ololo", "This is task : $task")
                 if (task.isSuccessful){
-
                     controller.navigateUp()
-                    Toast.makeText(requireContext(), "Success", Toast.LENGTH_SHORT).show()
-
+                    Toast.makeText(requireContext(), "Успешно", Toast.LENGTH_SHORT).show()
                 }else{
-
                     Toast.makeText(requireContext(), "Ошибка", Toast.LENGTH_SHORT).show()
-
                 }
             }
 

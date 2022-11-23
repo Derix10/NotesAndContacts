@@ -38,7 +38,8 @@ class MainActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 noteFragment,
-                R.id.contactFragment
+                R.id.contactFragment,
+                R.id.profileFragment
             )
         )
         setupActionBarWithNavController(controller, appBarConfiguration)

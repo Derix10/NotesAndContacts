@@ -29,8 +29,8 @@ import com.karumi.dexter.listener.single.PermissionListener
 class AddContacts : BaseFragment<FragmentAddContactsBinding>(FragmentAddContactsBinding::inflate),
     whatsappAndDialerListener {
 
-    private lateinit var bindingg : ItemWhatsappOrDialerBinding
-    private lateinit var alertDialog : AlertDialog
+    private lateinit var bindingg: ItemWhatsappOrDialerBinding
+    private lateinit var alertDialog: AlertDialog
 
     private var adapter: AddContactAdapter? = null
     private var cursor1: Cursor? = null
@@ -140,40 +140,57 @@ class AddContacts : BaseFragment<FragmentAddContactsBinding>(FragmentAddContacts
             true
         } catch (e: PackageManager.NameNotFoundException) {
             false
-
         }
         return whatsappInstalled!!
     }
 
-    override fun whatsappClick() {
-        val container: ViewGroup? = null
-        bindingg = ItemWhatsappOrDialerBinding.inflate(layoutInflater, container, false)
+
+    override fun whatsappClick(message: String, choose: Boolean) {
+
+        if (choose) {
+            if (appInstalledOrNot()) {
+                val intent = Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://api.whatsapp.com/send?phone=${message}")
+                )
+                val appNameWhatsapp = "Whatsapp"
+                alertDialogFun(intent, appNameWhatsapp)
 
 
-        if (appInstalledOrNot()) {
-
-            val builder = AlertDialog.Builder(activity)
-            builder.run {
-                setTitle("Whatsapp")
-                setMessage("Вы точно хотите перейти в это приложение?")
-                setPositiveButton("Да") { _, _ ->
-                    val intent = Intent(
-                        Intent.ACTION_VIEW,
-                        Uri.parse("https://api.whatsapp.com/send?phone=${bindingg.itemWhatsappContact}")
-                    )
-                    startActivity(intent)
-                }
-                setNegativeButton("Нет") { _, _ ->
-                }
+            } else {
+                Toast.makeText(
+                    requireContext(),
+                    "App is not installed ${message}",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
-
-            alertDialog = builder.create()
-            alertDialog.show()
-
-
-        } else {
-            Toast.makeText(requireContext(), "App is not installed", Toast.LENGTH_SHORT).show()
         }
+        if (!choose){
+
+                val intent = Intent(
+                    Intent.ACTION_DIAL,
+                    Uri.parse("tel:$message")
+                )
+                val appNameCall = "Dialer"
+                alertDialogFun(intent, appNameCall)
+        }
+    }
+
+    private fun alertDialogFun(intent: Intent, appName: String) {
+        val alertDialog: AlertDialog
+        val builder = AlertDialog.Builder(activity)
+        builder.run {
+            setTitle("App $appName")
+            setMessage("Вы точно хотите перейти в это приложение?")
+            setPositiveButton("Да") { _, _ ->
+                startActivity(intent)
+            }
+            setNegativeButton("Нет") { _, _ ->
+            }
+        }
+
+        alertDialog = builder.create()
+        alertDialog.show()
     }
 }
 
