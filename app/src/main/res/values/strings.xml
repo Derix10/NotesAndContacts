@@ -17,4 +17,7 @@
     <string name="title234">Title</string>
     <string name="description234">Description</string>
     <string name="images">Images</string>
+    <string name="у">Name</string>
+    <string name="ук">Contact</string>
+    <string name="set_image">Set Image</string>
 </resources>

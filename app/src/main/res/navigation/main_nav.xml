@@ -32,7 +32,7 @@
         tools:layout="@layout/fragment_on_board" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.experiments.ui.fragment.profile.ProfileFragment"
+        android:name="com.example.experiments.ui.fragment.profile.MyFragmentProfile"
         android:label="Images Profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

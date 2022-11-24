@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img_1"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragment.profile.MyFragmentProfile">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <androidx.cardview.widget.CardView
+        app:cardCornerRadius="150dp"
+        android:id="@+id/card_gallery"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="100dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp">
+        <ImageView
+            android:id="@+id/img_gallery"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </androidx.cardview.widget.CardView>
+
+
+
+    <Button
+        android:textSize="20sp"
+        android:text="@string/set_image"
+        app:layout_constraintTop_toBottomOf="@id/card_gallery"
+        app:layout_constraintStart_toStartOf="@id/card_gallery"
+        app:layout_constraintEnd_toEndOf="@id/card_gallery"
+        android:layout_marginTop="50dp"
+        android:id="@+id/btn_gallery"
+        android:layout_marginBottom="150dp"
+        android:paddingHorizontal="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
