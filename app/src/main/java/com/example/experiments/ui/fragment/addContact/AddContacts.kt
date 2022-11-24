@@ -9,12 +9,10 @@ import android.content.pm.PackageManager
 import android.database.Cursor
 import android.net.Uri
 import android.provider.ContactsContract
-import android.view.ViewGroup
 import android.widget.Toast
 import com.example.experiments.R
 import com.example.experiments.base.BaseFragment
 import com.example.experiments.databinding.FragmentAddContactsBinding
-import com.example.experiments.databinding.ItemWhatsappOrDialerBinding
 import com.example.experiments.model.ContactModel
 import com.example.experiments.ui.App
 import com.example.experiments.ui.fragment.addContact.AddContactAdapter.whatsappAndDialerListener
@@ -28,9 +26,6 @@ import com.karumi.dexter.listener.single.PermissionListener
 
 class AddContacts : BaseFragment<FragmentAddContactsBinding>(FragmentAddContactsBinding::inflate),
     whatsappAndDialerListener {
-
-    private lateinit var bindingg: ItemWhatsappOrDialerBinding
-    private lateinit var alertDialog: AlertDialog
 
     private var adapter: AddContactAdapter? = null
     private var cursor1: Cursor? = null
@@ -117,8 +112,6 @@ class AddContacts : BaseFragment<FragmentAddContactsBinding>(FragmentAddContacts
                 cursor1?.getString(cursor1?.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)!!)
             val contactContact =
                 cursor1?.getString(cursor1?.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)!!)
-            Toast.makeText(requireContext(), "cursor get name and contact", Toast.LENGTH_SHORT)
-                .show()
             contacts.add(
                 ContactModel(
                     name = contactNAme.toString(),
@@ -160,7 +153,7 @@ class AddContacts : BaseFragment<FragmentAddContactsBinding>(FragmentAddContacts
             } else {
                 Toast.makeText(
                     requireContext(),
-                    "App is not installed ${message}",
+                    "App is not installed",
                     Toast.LENGTH_SHORT
                 ).show()
             }

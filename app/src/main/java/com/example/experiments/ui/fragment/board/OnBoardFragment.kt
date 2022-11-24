@@ -102,8 +102,8 @@ class OnBoardFragment : BaseFragment<FragmentOnBoardBinding>(FragmentOnBoardBind
     }
 
     private fun firebaseAuthWithGoogle(idToken: String) {
-        val credentional = GoogleAuthProvider.getCredential(idToken, null)
-        auth.signInWithCredential(credentional)
+        val credential = GoogleAuthProvider.getCredential(idToken, null)
+        auth.signInWithCredential(credential)
             .addOnCompleteListener(requireActivity()) { task ->
                 Log.d("ololo", "This is task : $task")
                 if (task.isSuccessful){

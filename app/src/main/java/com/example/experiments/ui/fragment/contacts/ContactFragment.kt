@@ -33,10 +33,10 @@ class ContactFragment : BaseFragment<FragmentContactBinding>(FragmentContactBind
 
                 val builder = AlertDialog.Builder(activity)
                 builder.run {
-                    setTitle("Delete project list")
-                    setMessage("You want to delete project?")
-                    setPositiveButton("Yes") { _, _ ->   adapter.removeContact(itemPosition)                }
-                    setNegativeButton("Cancel") { _, _ -> adapter.notifyItemChanged(itemPosition)
+                    setTitle("Удалить этот контакт")
+                    setMessage("Ты точно хочешь удалить")
+                    setPositiveButton("Да") { _, _ ->   adapter.removeContact(itemPosition)                }
+                    setNegativeButton("Нет") { _, _ -> adapter.notifyItemChanged(itemPosition)
                     }
                 }
 
