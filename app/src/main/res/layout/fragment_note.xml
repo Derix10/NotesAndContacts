@@ -14,9 +14,8 @@
         android:layout_height="match_parent"
         android:id="@+id/rcView"
 
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="2"
-        tools:listitem="@layout/item_note"/>
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:spanCount="2" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:backgroundTint="@color/item_contact"

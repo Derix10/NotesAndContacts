@@ -9,6 +9,7 @@ import android.content.pm.PackageManager
 import android.database.Cursor
 import android.net.Uri
 import android.provider.ContactsContract
+import android.view.MenuItem
 import android.widget.Toast
 import com.example.experiments.R
 import com.example.experiments.base.BaseFragment
@@ -36,7 +37,6 @@ class AddContacts : BaseFragment<FragmentAddContactsBinding>(FragmentAddContacts
     @SuppressLint("SetTextI18n")
     override fun setupObserver() {
         super.setupObserver()
-
 
         Dexter.withContext(requireContext())
             .withPermission(Manifest.permission.READ_CONTACTS)
@@ -94,8 +94,8 @@ class AddContacts : BaseFragment<FragmentAddContactsBinding>(FragmentAddContacts
         }
     }
 
-
     override fun setupUI() {
+
         adapter = AddContactAdapter(this)
         binding.rvContact.adapter = adapter
     }

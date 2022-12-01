@@ -9,7 +9,13 @@ interface NoteDao {
     @Query("SELECT * FROM notemodel")
     fun getAllNote(): List<NoteModel>
 
-    @Insert
+    @Query("SELECT * FROM notemodel ORDER BY title ASC")
+    fun getAllNoteAlphaphit(): List<NoteModel>
+
+    @Query("SELECT * FROM notemodel ORDER BY createdTime ASC")
+    fun getAllNoteData(): List<NoteModel>
+
+    @Insert (onConflict = OnConflictStrategy.REPLACE)
     fun addNote(model: NoteModel)
 
     @Update

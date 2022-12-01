@@ -6,6 +6,7 @@ import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.experiments.R
@@ -18,6 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var controller : NavController
+    private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navBottomNav: BottomNavigationView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,13 +31,16 @@ class MainActivity : AppCompatActivity() {
         initNavCotroller()
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        return controller.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
     private fun initNavCotroller(){
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as
                 NavHostFragment
         controller = navHostFragment.navController
 
-        val appBarConfiguration = AppBarConfiguration(
+        appBarConfiguration = AppBarConfiguration(
             setOf(
                 noteFragment,
                 R.id.contactFragment,

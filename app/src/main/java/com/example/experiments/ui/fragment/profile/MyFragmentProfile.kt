@@ -58,7 +58,8 @@ class MyFragmentProfile : BaseFragment<FragmentProfileBinding>(FragmentProfileBi
             PERMISSION_CODE -> {
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
                     pickImageFromGallery()
-                }else{
+                }
+                else{
                     Toast.makeText(requireContext(), "Permission denied", Toast.LENGTH_SHORT).show()
                 }
 
